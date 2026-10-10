@@ -1,0 +1,101 @@
+---
+schema_version: 2
+generation: 13
+build_config_sha256: 610321f94b66f940fdfc8c66370ae04516652e4cdb4ef964f70d640cf840cb87
+identity:
+  project: https://alpinelinux.org/cloud
+  image_key: 3.24.2-x86_64-limine-cloudinit-vm-generic
+  version: '3.24'
+  release: 3.24.2
+  arch: x86_64
+  firmware: limine
+  bootstrap: cloudinit
+  machine: vm
+  cloud: generic
+  revision: 2
+state:
+  built: '2026-09-29T23:53:40.104141'
+  uploaded: '2026-09-30T00:03:14.223347'
+  imported: '2026-10-07T04:33:53.655863'
+  import_id:
+  import_region:
+  signed: '2026-09-29T23:53:56.234831'
+  published: '2026-10-07T16:33:13.349993'
+  released: '2026-10-07T14:40:10.961129'
+outputs:
+  qcow2:
+    file: alpine-3.24.2-x86_64-cloudinit-r2.qcow2
+    clouds:
+    - nocloud
+    - oci
+    built: '2026-09-29T23:53:40.104141'
+    signed: '2026-09-29T23:53:54.027209'
+    size: 157220864
+    sha512: 6b9928cea1c6243affb8a9b09eba6046cd090e8bdb7141fbf0c8f2649c4a99d62e12cda289da41f99de82ce2b3e3780772dd594eaee3693cb49691d81cbe5d4b
+    uploaded: '2026-09-29T23:56:30.717082'
+    signature_uploaded: '2026-09-29T23:56:42.690772'
+  vhd:
+    file: alpine-3.24.2-x86_64-cloudinit-r2.vhd
+    clouds:
+    - aws
+    - azure
+    built: '2026-09-29T23:53:42.217274'
+    signed: '2026-09-29T23:53:55.670605'
+    size: 463471104
+    sha512: ae5d5d2c2069d7429e74d96a73986ec09fdd807aac30f885867bcc31d521ecfda3bf9ab3634916e8228925ef0bf772219ccab9b2ff539250b615f4b764eb6051
+    uploaded: '2026-09-30T00:01:58.366786'
+    signature_uploaded: '2026-09-30T00:02:03.381049'
+  raw.tar.gz:
+    file: alpine-3.24.2-x86_64-cloudinit-r2.raw.tar.gz
+    clouds:
+    - gcp
+    built: '2026-09-29T23:53:52.190408'
+    signed: '2026-09-29T23:53:56.232717'
+    size: 88950403
+    sha512: 58ccabbdbe99a5df6560688fa7b1b49cb1d0d6b27d3bfc0a4a7c64a36d3d71452b76b27e200fb0e97918d21409c8b59ecb6157ecd4993d097d388f72086ec230
+    uploaded: '2026-09-30T00:03:09.177587'
+    signature_uploaded: '2026-09-30T00:03:14.223024'
+destinations:
+  aws:
+    cloud: aws
+    image_format: vhd
+    imported: '2026-10-07T04:33:53.655863'
+    import_id: ami-07f29f2b1450afb3c
+    import_region: us-west-2
+    artifacts:
+      ap-south-2: ami-0e6512d4ca19c3eb0
+      ap-south-1: ami-0e8e31905fd3ea6fb
+      eu-south-1: ami-049c269a3cf417b69
+      eu-south-2: ami-022d18767a2780960
+      me-central-1: ami-045ea1230eb780723
+      il-central-1: ami-01d54f2a09e6436ef
+      ca-central-1: ami-0a6999aa2d655038d
+      ap-east-2: ami-08aa5feb7618ba530
+      mx-central-1: ami-0d161bb0b3ac6b943
+      eu-central-1: ami-0e2c7c4a5816878b0
+      eu-central-2: ami-0a551ea3833fad710
+      us-west-1: ami-04c8c5e2338c9c1fe
+      us-west-2: ami-07f29f2b1450afb3c
+      af-south-1: ami-0c51b9588c880b575
+      eu-north-1: ami-0a5430b950902db2e
+      eu-west-3: ami-0a5b1c4b14e29aa93
+      eu-west-2: ami-0a4c28906a6fed2a5
+      eu-west-1: ami-0a5b2e2a656dcb617
+      ap-northeast-3: ami-009dbd7387d1a7700
+      ap-northeast-2: ami-0b3c0eb79c6113bb9
+      ap-northeast-1: ami-0d30022a7dd83e909
+      sa-east-1: ami-0968e7aad9113324a
+      ap-east-1: ami-0bb90dc8a6308b5f7
+      ca-west-1: ami-0fdea6ddac99197a8
+      ap-southeast-1: ami-0d12ef2307678d06f
+      ap-southeast-2: ami-084d0298a8281a273
+      ap-southeast-3: ami-053dd6d9e6537fc98
+      ap-southeast-4: ami-0d73afd11f03c7e8a
+      us-east-1: ami-0a20eafaa0ebabf64
+      ap-southeast-5: ami-0060296f06a426d2e
+      ap-southeast-6: ami-0fdcd574da9e0129d
+      us-east-2: ami-080684a4e8b3149c6
+      ap-southeast-7: ami-0ce3289823e3ddc39
+    published: '2026-10-07T16:33:13.349993'
+artifacts:
+metadata_updated: '2026-10-07T16:33:13.366832'

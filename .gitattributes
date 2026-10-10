@@ -1,0 +1,22 @@
+# Единый перевод строк — LF у всех текстовых файлов.
+#
+# Зачем это здесь. Материалы работы копируются В LINUX (ВМ Alpine), причём
+# shell-скрипты скачиваются туда через HTTP и запускаются (`sh provision.sh`,
+# `firewall_lab.sh`). Если при checkout на Windows файлы получат CRLF, скрипты
+# сломаются с «bad interpreter: /bin/sh^M» — поэтому для них LF обязателен.
+# При глобальном core.autocrlf=true это единственный надёжный способ:
+# атрибуты в репозитории перекрывают настройку пользователя.
+* text=auto
+*.sh   text eol=lf
+*.py   text eol=lf
+*.md   text eol=lf
+*.conf text eol=lf
+*.rules text eol=lf
+*.lua  text eol=lf
+*.txt  text eol=lf
+
+# Двоичные файлы — не трогать (образ и ISO уже сжаты):
+*.ova binary
+*.iso binary
+*.png binary
+*.vdi binary
