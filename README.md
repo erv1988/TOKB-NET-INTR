@@ -28,6 +28,7 @@ OVA-образа `dist/alpine-tokb.ova`, плюс хост Windows 11 в рол�
 | `configs/firewall_lab.sh` | Межсетевой экран на защищаемом хосте: `stateful` / `synvuln` / `synflood` / `arp` / `show` / `reset` |
 | `configs/snort_lab.conf` | Конфиг Snort в **читаемом 2.9-формате** (учебный текст). Рабочий Lua-конфиг собирается из него `snort2lua` |
 | `configs/lab.rules` | Правила Snort: сканирование портов, SYN-флуд, обращение к сервису |
+| `labscripts/` | Пояснения «этап → скрипт → команда» по ролям. В образе это `/opt/labscripts/{attacker,victim}`: там те же скрипты, но разложенные по ролям (файлы — **символические ссылки** на `/opt/tokb`, поэтому в репозитории лежат только `README.md`) |
 | `templates/Отчет_шаблон.md` | Шаблон отчёта студента (таблицы измерений + артефакты) |
 | `tests/test_scripts.py` | Автопроверка корректности скриптов (оффлайн, без отправки пакетов) |
 
@@ -46,12 +47,17 @@ OVA-образа `dist/alpine-tokb.ova`, плюс хост Windows 11 в рол�
 3. Статические IP по таблице стенда: жертва `192.168.56.10`, атакующий `192.168.56.20`
    (файл `/etc/network/interfaces`, см. этап 0 основного документа).
 4. Всё ПО в образе **уже установлено**: `snort` (это **Snort 3**, проверка `snort -V`),
-   `nmap`, `tcpdump`, `scapy`, `iptables`, `python3`, `arpwatch`, `conntrack-tools`.
-   На «чистой» Alpine: `sudo apk add snort nmap tcpdump scapy iptables iproute2 python3 arpwatch`
+   `nmap`, `tcpdump`, `scapy`, `iptables`, `python3`, `arpwatch`, `conntrack-tools`,
+   `mc` (файловый менеджер со встроенным редактором — им правят `/etc/network/interfaces`
+   и `/etc/snort/lab.lua`, чтобы не осваивать `vi`).
+   На «чистой» Alpine: `sudo apk add snort nmap tcpdump scapy iptables iproute2 python3 arpwatch mc`
    — при этом помните о двух особенностях Alpine 3.24 (apk-tools 3.0.8):
    репозитории пишутся **одной строкой** `.../alpine/v3.24 main community` и только по **https://**.
-5. Материалы ЛР в образе разложены: скрипты и МЭ — `/opt/tokb/`, конфиги Snort —
-   `/etc/snort/` (`lab.conf` — учебный текст, `lab.lua` — рабочий, `rules/lab.rules`).
+5. Материалы ЛР в образе разложены: эталонные скрипты и МЭ — `/opt/tokb/`,
+   они же по ролям — `/opt/labscripts/attacker` и `/opt/labscripts/victim`
+   (ссылки на `/opt/tokb` + `README.md` с таблицей «этап → скрипт → команда»),
+   конфиги Snort — `/etc/snort/` (`lab.conf` — учебный текст, `lab.lua` — рабочий,
+   `rules/lab.rules`).
 6. **Перед этапом 6 поправить MAC шлюза** в `arp_spoof` внутри `/etc/snort/lab.lua`:
    в образе стоит заглушка `00:11:22:33:44:55`, нужен реальный MAC адаптера Host-Only
    (`ip neigh show 192.168.56.1` на жертве или `arp -a` на Windows).

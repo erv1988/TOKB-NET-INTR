@@ -77,8 +77,9 @@ guest_type "wget -qO /tmp/p.sh http://10.0.2.2:$PORT/build/provision.sh && sh /t
 guest_wait 300
 guest_shot
 # Контроль состава материалов: в /opt/tokb должны быть ВСЕ скрипты,
-# firewall_lab.sh и verify_ids.py (в логе провижна не должно быть «ПРОПУЩЕН»).
-guest_type "ls -l /opt/tokb; echo ---; ls -l /etc/snort /etc/snort/rules; echo ---; grep -c enable_builtin_rules /etc/snort/lab.lua"
+# firewall_lab.sh и verify_ids.py (в логе провижна не должно быть «ПРОПУЩЕН»),
+# в /opt/labscripts — рабочие каталоги ролей со ссылками, плюс проверка mc.
+guest_type "ls -l /opt/tokb; echo ---; ls -l /etc/snort /etc/snort/rules; echo ---; grep -c enable_builtin_rules /etc/snort/lab.lua; echo ---; ls -l /opt/labscripts/attacker /opt/labscripts/victim; echo ---; mc --version | head -1"
 guest_wait 8
 guest_shot
 # Ожидаем в хвосте лога:
